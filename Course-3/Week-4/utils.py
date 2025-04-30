@@ -1,5 +1,4 @@
 import string
-import random
 import math
 import numpy as np
 import pandas as pd
@@ -8,6 +7,7 @@ from scipy.stats import lognorm
 import ipywidgets as widgets
 from ipywidgets import interact_manual
 from dataclasses import dataclass
+import secrets
 
 
 def sample_size_diff_means(mu1, mu2, sigma, alpha=0.05, beta=0.20, two_sided=True):
@@ -48,7 +48,7 @@ def generate_user_ids(num_users):
     user_ids = []
     
     while len(user_ids) < num_users:
-        new_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
+        new_id = ''.join(secrets.SystemRandom().choices(string.ascii_uppercase + string.digits, k=10))
         
         if new_id not in user_ids:
             user_ids.append(new_id)
